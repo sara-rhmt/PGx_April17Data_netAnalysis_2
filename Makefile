@@ -21,6 +21,7 @@ histogram.png: histogram.tsv
 	Rscript -e 'library(ggplot2); qplot(Var1, Freq, data=read.delim("$<")); ggsave("$@")'
 	rm Rplots.pdf
 
-report.html: report.rmd
+report.html: report.rmd histogram.tsv histogram.png
 	Rscript -e 'rmarkdown::render("$<")'
-
+	
+	
