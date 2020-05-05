@@ -20,8 +20,7 @@ histogram.tsv: histogram.r words.txt
 histogram.png: histogram.tsv
 	Rscript -e 'library(ggplot2); qplot(Var1, Freq, data=read.delim("$<")); ggsave("$@")'
 	rm Rplots.pdf
-	
-report.html: report.rmd
-	 Rscript -e 'rmarkdown::render("$<")'
 
-	
+report.html: report.rmd
+	Rscript -e 'rmarkdown::render("$<")'
+
