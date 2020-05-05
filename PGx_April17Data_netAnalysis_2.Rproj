@@ -1,0 +1,16 @@
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+BuildType: Makefile
+MakefilePath: ~/pCloud Drive/pCloud_Sync/PostDoc/NL/PGx/Paper_April2020/Quan_April17data_netAnalysis/PGx_April17Data_netAnalysis_2
