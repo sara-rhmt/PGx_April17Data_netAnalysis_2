@@ -23,5 +23,5 @@ histogram.png: histogram.tsv
 	
 report.html: report.rmd
 	 Rscript -e 'rmarkdown::render("$<")'
-	 
+
 	
