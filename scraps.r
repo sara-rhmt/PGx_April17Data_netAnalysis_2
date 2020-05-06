@@ -8,3 +8,14 @@ for (i in 1:18)
   assign(substr(data.dir[i], nchar("genes.log2TPM.CD4.T"), (nchar(data.dir[i]) - nchar(".diff.out.txt"))), my.read(paste(data.path, data.dir[i], sep = ""), T))
 # Read all pre vs pre comparisons from the excel sheet of Dec
 
+# conver Quan IDs to ENSG IDs
+ENSG <- strsplit(IL17.responder.post.vs.IL17.non_responder.post[, 1], "\\.")
+for (i in 1:length(ENSG)) ENSG[[i]] <- ENSG[[i]][2]
+ENSG <- unlist(ENSG)
+ls()
+# select dataframes containing original data
+for (j in c(8:11, 13, 18:20, 22:28, 30, 32)) 
+  if (dim(get(ls()[j]))[2] == 4) 
+    assign(ls()[j], cbind(ENSG, get(ls()[j])))
+for (i in c(7:14, 18:33))
+  assign(ls()[i], merge(hgnc.summary, get(ls()[i]), by.x = "Ensembl.ID.supplied.by.Ensembl.", by.y = "ENSG", no.dups = T, incomparables = NA))
