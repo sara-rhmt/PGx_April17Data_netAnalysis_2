@@ -17,5 +17,16 @@ ls()
 for (j in c(8:11, 13, 18:20, 22:28, 30, 32)) 
   if (dim(get(ls()[j]))[2] == 4) 
     assign(ls()[j], cbind(ENSG, get(ls()[j])))
-for (i in c(7:14, 18:33))
+for (i in c(8:11, 13, 18:20, 22:28, 30, 32))
   assign(ls()[i], merge(hgnc.summary, get(ls()[i]), by.x = "Ensembl.ID.supplied.by.Ensembl.", by.y = "ENSG", no.dups = T, incomparables = NA))
+my.file.names <- c("IL17.responder.pre.vs.IL17.non_responder.pre", "IL17.responder.pre.vs.TNF.non_responder.pre", "TNF.non_responder.pre.vs.IL17.non_responder.pre", "TNF.responder.pre.vs.IL17.non_responder.pre", "TNF.responder.pre.vs.IL17.responder.pre", "TNF.responder.pre.vs.TNF.non_responder.pre")
+for (i in my.file.names)
+  assign(i, merge(hgnc.summary, get(i), by.x = "Ensembl.ID.supplied.by.Ensembl.", by.y = "ensg.id", no.dups = T, incomparables = NA))
+for (i in my.file.names){
+  t1 <- get(i)
+  names(t1) <- names(IL17.responder.post.vs.IL17.non_responder.post)
+  assign(i, t1)
+  }
+remove(t1)
+
+
